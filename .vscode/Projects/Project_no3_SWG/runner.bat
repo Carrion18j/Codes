@@ -1,1 +1,1 @@
-start "" "C:\Users\shiva\OneDrive\Codes\.vscode\Projects\Project_no3_SWG\index.html"
+start "" "C:\Users\shiva\OneDrive\Codes\Codes\.vscode\Projects\Project_no3_SWG\index.html"
