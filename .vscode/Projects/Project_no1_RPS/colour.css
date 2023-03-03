@@ -1,18 +1,20 @@
-#para1 {
-  color: blue;
+body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color:rgb(188, 145, 229);
 }
-#hedding {
-  color: blue;
+div{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  width: 440px;
+  border: 10px solid rgb(103, 10, 190);
+  padding: 10px;
 }
-#playername {
-  color: blue;
-}
-#str {
-  color: blue;
-}
-#winner {
-  color: blue;
-}
-text.txt {
-  color: blue;
+.summery{
+  height: auto;
+  width: 380px;
+  border-bottom: 4px;
 }

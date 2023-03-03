@@ -3,23 +3,39 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//Random num
+const rand = () => {
+  return Math.floor(Math.random() * 3);
+}
+//Convert num to choos 
+const choos = (choics)=>{
+  if (choics == 0) {
+    choics = "rock";
+  } else if (choics == 1) {
+    choics = "paper";
+  } else {
+    choics = "scissor";
+  }
+}
+
 // Ask for player name
 let playername = prompt("Enter your name");
 let playerChoice = prompt(playername + " please chose rock, paper, scissor");
-let computerChoice = Math.floor(Math.random() * 3);
+let computerChoice = rand();
+
+if (playername == '') {
+  playername = 'player'
+}
+if (playerChoice == '') {
+  playerChoice = rand()
+}
 
 //Give player name to .html to print
 document.getElementById(`playername`).innerHTML =
   "Hi " + capitalizeFirstLetter(playername);
 
 //convert computer choice into rock paper sizer
-if (computerChoice == 0) {
-  computerChoice = "rock";
-} else if (computerChoice == 1) {
-  computerChoice = "paper";
-} else {
-  computerChoice = "scissor";
-}
+computerChoice = choos(computerChoice)
 
 let str =
   capitalizeFirstLetter(playername) +
