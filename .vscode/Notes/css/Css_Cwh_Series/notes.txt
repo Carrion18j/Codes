@@ -2,3 +2,15 @@ p{} element selecter
 .__ {} class selector
 #__ {} id selector
 (element) , (element){} group selector 
+
+In this file i use `` to refer an element 
+
+`font family`
+use google fonts to get fonts 
+
+1px = 1/96 of inch 
+
+there are three ways to write color on css 
+1. color by name -->  red
+2. color by rgb value --> rgb(0,0,0)  (btw black)
+3. color by hex value --> #ffffff (btw white)
