@@ -8,10 +8,10 @@ const rand = () => {
   return Math.floor(Math.random() * 3);
 }
 //Convert num to choos 
-const choos = (choics)=>{
-  if (choics == 0) {
+const choos = (choics) => {
+  if (choics == '0') {
     choics = "rock";
-  } else if (choics == 1) {
+  } else if (choics == `1`) {
     choics = "paper";
   } else {
     choics = "scissor";
@@ -27,7 +27,8 @@ if (playername == '') {
   playername = 'player'
 }
 if (playerChoice == '') {
-  playerChoice = rand()
+  playerChoice = playerChoice.parceInt()
+  playerChoice = choos(playerChoice)
 }
 
 //Give player name to .html to print
@@ -37,13 +38,7 @@ document.getElementById(`playername`).innerHTML =
 //convert computer choice into rock paper sizer
 computerChoice = choos(computerChoice)
 
-let str =
-  capitalizeFirstLetter(playername) +
-  " chose " +
-  playerChoice +
-  " and computer chose " +
-  computerChoice;
-document.getElementById(`str`).innerHTML = str;
+document.getElementById(`str`).innerHTML = (capitalizeFirstLetter(playername) + " chose " + playerChoice + " and computer chose " + computerChoice);
 
 // Determines the winner
 if (
