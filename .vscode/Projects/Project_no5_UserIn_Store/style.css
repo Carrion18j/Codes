@@ -1,0 +1,21 @@
+body{
+    background-color: aqua;
+}
+
+.nameFunc{
+    font-style: normal;
+
+}
+
+.nameFunc.name{
+    font-style: normal;
+
+}
+
+.emailFunc{
+    font-style: normal;
+}
+
+.easswordFunc{
+    font-style: normal;
+}

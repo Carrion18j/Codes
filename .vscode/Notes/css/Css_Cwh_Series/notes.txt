@@ -1,0 +1,4 @@
+p{} element selecter
+.__ {} class selector
+#__ {} id selector
+(element) , (element){} group selector 
