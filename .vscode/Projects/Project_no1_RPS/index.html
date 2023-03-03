@@ -10,17 +10,27 @@
 </head>
 
 <body>
-  <div>
+  <div id="div">
     <h1 id="Hedding">RockPaperScissor</h1>
-    <p class="summery">Rock, Paper, Scissors. The familiar game of Rock, Paper, Scissors is played like this: at the same time,
+    <p class="summery">Rock, Paper, Scissors. The familiar game of Rock, Paper, Scissors is played like this: at the
+      same time,
       two players display one of three symbols: a rock, paper, or scissors (here second player is computer).
       A rock beats scissors, scissors beat paper by cutting it, and paper beats rock by covering it.</p>
-    <p id="playername">playername</p>
-    <p id="str">--</p>
-    <p id="winner">winner</p>
-    <label for="choos">Choos Form Rock Paper Scissors : </label>
-    <input type="text" placeholder="type here " class="input">
-    <p>press press function 5 to retry<br />(it will refresh the page)</p>
+    <div class="info">
+      <label for="name">Enter name:</label>
+      <input type="text" class="name">
+      <label for="choice">Enter choice:</label>
+      <input type="text" class="choice">
+    </div>
+    <div class="buttons">
+      <button id="rock" onclick="userchoice('rock')">rock</button>
+      <button id="paper" onclick="userchoice('paper')">paper</button>
+      <button id="scissors" onclick="userchoice('scissors')">scissors</button>
+    </div>
+    <p class="str">---</p>
+    <div>
+      <p class="winner">---</p>
+    </div>
   </div>
 </body>
 <script src="script.js"></script>

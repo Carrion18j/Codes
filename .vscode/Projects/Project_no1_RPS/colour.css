@@ -4,7 +4,7 @@ body{
   flex-direction: column;
   background-color:rgb(188, 145, 229);
 }
-div{
+#div{
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -17,4 +17,23 @@ div{
   height: auto;
   width: 380px;
   border-bottom: 4px;
+}
+button{
+  align-items: center;
+  width: 120px;
+  height: 30px;
+  border: 3px solid rgb(95, 95, 222);
+  border-radius: 3px;
+}
+.buttons{
+  height: auto;
+  width: 380px;
+}
+input{
+  align-items: center;
+  width: 80px;
+  height: 20px;
+  border: 3px solid rgb(95, 95, 222);
+  border-radius: 3px;
+  margin-bottom: 20px;
 }
