@@ -46,6 +46,8 @@ button{
   height: 30px;
   border: 6px solid rgb(103, 10, 190);
   font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
 }
 #winner{
   margin-top: -6px;
