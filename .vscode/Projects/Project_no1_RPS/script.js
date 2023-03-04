@@ -1,25 +1,27 @@
 const userchoice = (value) => {
+  playerChoice = document.getElementById(value).innerHTML
+  
   let computerChoice = Math.floor(Math.random() * 3)
 
   // convert compchoos to RPS
   if (computerChoice == "0") {
-    computerChoice = "rock";
+    computerChoice = "Rock";
   } else if (computerChoice == "1") {
-    computerChoice = "paper";
+    computerChoice = "Paper";
   } else {
-    computerChoice = "scissors";
+    computerChoice = "Scissors";
   }
-  playerChoice = document.getElementById(value).innerHTML
   document.getElementById("str").innerHTML = ("You choos " + playerChoice + " and Computer choos " + computerChoice)
 
+  
   // determines the winner
-  if (playerChoice === "rock" && computerChoice === "scissors") {
+  if (playerChoice == "Rock" && computerChoice == "Scissors") {
     document.getElementById("winner").innerHTML = "You Win!";
-  } else if (playerChoice === "paper" && computerChoice === "rock") {
+  } else if (playerChoice == "Paper" && computerChoice == "Rock") {
     document.getElementById("winner").innerHTML = "You Win!";
-  } else if (playerChoice === "scissors" && computerChoice === "paper") {
+  } else if (playerChoice == "Scissors" && computerChoice == "Paper") {
     document.getElementById("winner").innerHTML = "You Win!";
-  } else if (playerChoice === computerChoice) {
+  } else if (playerChoice == computerChoice) {
     document.getElementById("winner").innerHTML = "It's a tie!";
   } else {
     document.getElementById("winner").innerHTML = "Computer Wins!";
