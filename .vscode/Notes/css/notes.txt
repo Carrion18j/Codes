@@ -14,3 +14,7 @@ there are three ways to write color on css
 1. color by name -->  red
 2. color by rgb value --> rgb(0,0,0)  (btw black)
 3. color by hex value --> #ffffff (btw white)
+
+padding/maergin : 10px 20px 30px 40px  -->(top right bottom laft)
+padding/maergin : 10px 20px -->(x,y)
+box-sizing: border box;
