@@ -5,32 +5,27 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   <title>RockPaperScissor</title>
   <link rel="stylesheet" href="colour.css" />
 </head>
 
 <body>
-  <div id="div">
-    <h1 id="Hedding">RockPaperScissor</h1>
+  <div class="div">
+    <h1 class="Hedding">RockPaperScissor</h1>
     <p class="summery">Rock, Paper, Scissors. The familiar game of Rock, Paper, Scissors is played like this: at the
       same time,
       two players display one of three symbols: a rock, paper, or scissors (here second player is computer).
       A rock beats scissors, scissors beat paper by cutting it, and paper beats rock by covering it.</p>
-    <div class="info">
-      <label for="name">Enter name:</label>
-      <input type="text" class="name">
-      <label for="choice">Enter choice:</label>
-      <input type="text" class="choice">
-    </div>
     <div class="buttons">
-      <button id="rock" onclick="userchoice('rock')">rock</button>
-      <button id="paper" onclick="userchoice('paper')">paper</button>
-      <button id="scissors" onclick="userchoice('scissors')">scissors</button>
+      <button id="rock" onclick="userchoice('rock')">Rock</button>
+      <button id="paper" onclick="userchoice('paper')">Paper</button>
+      <button id="scissors" onclick="userchoice('scissors')">Scissors</button>
     </div>
-    <p class="str">---</p>
-    <div>
-      <p class="winner">---</p>
-    </div>
+    <p id="str">---</p>
+    <p id="winner">---</p>
   </div>
 </body>
 <script src="script.js"></script>
