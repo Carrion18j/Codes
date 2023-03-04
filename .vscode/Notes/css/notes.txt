@@ -18,3 +18,4 @@ there are three ways to write color on css
 padding/maergin : 10px 20px 30px 40px  -->(top right bottom laft)
 padding/maergin : 10px 20px -->(x,y)
 box-sizing: border box;
+
