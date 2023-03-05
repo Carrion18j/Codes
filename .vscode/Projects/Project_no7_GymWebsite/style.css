@@ -1,11 +1,35 @@
-*{
-    font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
-a{
-    text-decoration: none; 
-
+.mainContainer {
+  width: 1380px;
+  height: 150px;
+  display: inline-block;
 }
-img{
-    width: 80px;
-    height: auto;
+.logo {
+  width: auto;
+  display: inline-block;
+}
+nav {
+  width: auto;
+  display: inline-block;
+}
+.otherNav{
+    display: inline;
+}
+.mainContainer h1 {
+  width: 200px;
+  font-size: 20px;
+  height: auto;
+}
+li {
+  display: inline-block;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  width: 80px;
+  height: auto;
 }
