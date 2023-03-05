@@ -20,3 +20,11 @@ padding/maergin : 10px 20px -->(y,x)
 box-sizing: border box;
 
 imp prop ( display: inline-block )
+
+there are main 5 main type of position 
+position: absolute , relative , static(default) , sticky and fixed
+
+(relative mean ralative to its normal position and will leave a gap at its normal position)
+(absolute mean moving from the main position to its parent)
+(sticky mean first to asign its position and then it will stick to the position like (navigation bar on web))
+(sticky will frist stay at its asigned position and as we scroll down it will stick there)
