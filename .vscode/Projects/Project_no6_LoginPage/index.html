@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/interactiveUi.css">
+  <link rel="stylesheet" href="style/navigationBar.css">
+  <link rel="stylesheet" href="style/backgroundAnime.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -16,9 +18,9 @@
 
   <header>
       <ul class="navi">
-        <li class="lists home"><i class="fa fa-home" style="color: rgba(255, 255, 255, 0.07);"></i><a class="infolink" href=""> Home</a></li>
-        <li class="lists othinfo"><i class="fa fa-info" style="color: rgba(255, 255, 255, 0.07);"></i><a class="infolink" href=""> Info</a></li>
-        <li class="lists othinfo"><i class="fa fa-registered" style="color: rgba(255, 255, 255, 0.07);"></i><a class="infolink" href=""> Register</a></li>
+        <li class="lists home"><i class="fa fa-home" style="color: aliceblue;"></i><a class="infolink" href=""> Home</a></li>
+        <li class="lists othinfo"><i class="fa fa-info" style="color: aliceblue;"></i><a class="infolink" href=""> Info</a></li>
+        <li class="lists othinfo"><i class="fa fa-registered" style="color: aliceblue;"></i><a class="infolink" href=""> Register</a></li>
       </ul>
   </header>
   <main>
@@ -58,10 +60,10 @@
           <label for="username"> Name</label>
           <input type="text" placeholder="Enter your name" id="username">
           <label for="gmail"> Gmail</label>
-          <input type="text" placeholder="Gmail" id="gmail">
+          <input type="email" placeholder="Gmail" id="gmail">
           <label for="password"> Password</label>
           <input type="password" placeholder="Password" id="password">
-          <button class="LoginBut" onclick="btn()"> Log In</button><br />
+          <button class="LoginBut" > Log In</button><br />
           <p class="help"><a href="#">Help</a></p>
           <p class="register">Didn't <a href="#">registred</a> yet ?</p>
         </div>
