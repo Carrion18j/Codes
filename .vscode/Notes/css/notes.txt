@@ -16,6 +16,7 @@ there are three ways to write color on css
 3. color by hex value --> #ffffff (btw white)
 
 padding/maergin : 10px 20px 30px 40px  -->(top right bottom laft)
-padding/maergin : 10px 20px -->(x,y)
+padding/maergin : 10px 20px -->(y,x)
 box-sizing: border box;
 
+imp prop ( display: inline-block )
