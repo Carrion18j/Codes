@@ -7,6 +7,19 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+body {
+  background-image: url(https://wallpaperaccess.com/full/1244861.jpg);
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center 0px;
+}
+.backgroundImg {
+  position: absolute;
+  width: auto;
+  border-radius: 4px;
+  top: 100px;
+  left: 7px;
+}
 form {
   position: absolute;
   top: 50%;
