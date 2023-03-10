@@ -55,10 +55,4 @@ const App= ()=>{
   );
 }
 
-// const BackgroundImg = () => {
-//   return (
-//     <img src="https://wallpaperaccess.com/full/1244861.jpg" alt="" />
-//   )
-// };
-
 export default App ;
