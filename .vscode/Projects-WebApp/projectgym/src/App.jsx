@@ -7,7 +7,7 @@ import CalculateIcon from "@mui/icons-material/Calculate";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import LoginIcon from "@mui/icons-material/Login";
 
-const App= ()=>{
+const App = () => {
   const [value, setValue] = React.useState(0);
 
   return (
@@ -53,6 +53,6 @@ const App= ()=>{
       </mui.BottomNavigation>
     </mui.Box>
   );
-}
+};
 
-export default App ;
+export default App;
