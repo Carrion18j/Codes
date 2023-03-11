@@ -1,6 +1,45 @@
 import { React, useState } from "react";
 import NavCss from "./Nav.css";
 
+export function Nav() {
+  return (
+    <div id="navcontainer">
+      <h1>SANIDHYA CONSULTING</h1>
+      <ul id="navbar">
+        <li className="links" id="link-1">
+          <a href="#">About</a>
+        </li>
+        <li className="links" id="link-2">
+          <a href="#">Projects</a>
+        </li>
+        <li className="links" id="link-3">
+          <a href="#">Services</a>
+        </li>
+        <li className="links" id="link-4">
+          <a href="#">Plan & Pricing</a>
+        </li>
+        <li className="links" id="link-5">
+          <a href="#">Tool & Tips</a>
+        </li>
+        <li className="links" id="link-6">
+          <a href="#">Contact</a>
+        </li>
+        <li>
+          <label for="log" >
+            <img id="logo"
+              src="https://cdn.iconscout.com/icon/free/png-512/account-1779372-1512648.png?f=avif&w=256"
+              alt="img"
+            />
+          </label>
+          <a href="" id="log">
+            Log In
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
 export function App() {
   return (
     <div>
@@ -47,45 +86,6 @@ export function App() {
           <button>More Info</button>
         </div>
       </div>
-    </div>
-  );
-}
-
-export function Nav() {
-  return (
-    <div>
-      <h1>SANIDHYA CONSULTING</h1>
-      <ul>
-        <li className="links" id="link-1">
-          <a href="#">About</a>
-        </li>
-        <li className="links" id="link-2">
-          <a href="#">Projects</a>
-        </li>
-        <li className="links" id="link-3">
-          <a href="#">Services</a>
-        </li>
-        <li className="links" id="link-4">
-          <a href="#">Plan & Pricing</a>
-        </li>
-        <li className="links" id="link-5">
-          <a href="#">Tool & Tips</a>
-        </li>
-        <li className="links" id="link-6">
-          <a href="#">Contact</a>
-        </li>
-        <li>
-          <label for="log">
-            <img
-              src="https://cdn.iconscout.com/icon/free/png-512/account-1779372-1512648.png?f=avif&w=256"
-              alt="img"
-            />
-          </label>
-          <a href="" id="log">
-            Log In
-          </a>
-        </li>
-      </ul>
     </div>
   );
 }
