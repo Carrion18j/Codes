@@ -1,0 +1,30 @@
+.navi {
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 25px;
+  width: 1470px;
+  display: flex;
+  gap: 100px;
+  padding: 0;
+  list-style-type: none;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+.infolink {
+  text-decoration: none;
+  padding-bottom: 8px;
+}
+.lists a:hover {
+  text-decoration: underline;
+}
+.home {
+  padding-left: 10px;
+}
+img {
+  width: 16px;
+  height: auto;
+}
