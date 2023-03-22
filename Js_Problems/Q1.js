@@ -4,8 +4,8 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order. */
 
-let nums =[2,7,11,15]
-let target = 9
+let nums =[2,31,63,21,34,23,2435,23,]
+let target = 2437
 
 let twoSum = function (nums, target) {
   let mp = new Map()

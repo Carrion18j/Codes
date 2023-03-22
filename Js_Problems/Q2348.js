@@ -4,17 +4,19 @@ A subarray is a contiguous non-empty sequence of elements within an array. */
 
 nums = [1, 3, 0, 0, 2, 0, 0, 4];
 
-let zeroFilledSubarray = function (nums) {
-  let mp = new Map();
-  let subArr = 0;
-  for (let i = 0; i < nums; i++) {
-    nums.map((num) => {
-      if (num === 0) {
-        subArr++;
-      } else if (num === nums[i]) {
-        subArr++;
+let sunarray = 0;
+
+for (let i = 0; i < nums.length; i++) {
+  nums.map(() => {
+    if (nums[i] === 0) {
+      sunarray++;
+      if (nums[i] === nums[++i]) {
+        sunarray++;
+        if (nums[i] === nums[++i] && nums[i] === nums[i + 2]) {
+          sunarray++;
+        }
       }
-    });
-  }
-  return subArr;
-};
+    }
+  });
+}
+console.log(sunarray);
