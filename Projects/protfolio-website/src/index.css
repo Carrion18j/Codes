@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --primaryC:#191825;
+    --secondryC:#865DFF;
+    --pinkD:#E384FF;
+    --pinkL:#FFA3FD;
+}
+
+.bg-primary{
+    background-color: var(--primaryC);
+}
+.bg-secondary{
+    background-color: var(--secondaryC);
+}
+.text-main{
+    color: var(--secondryC);
+}
+
+.link-underline {
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .5s ease-in-out;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#FFA3FD, #FFA3FD)
+}
+.link-underline:hover {
+    background-size: 100% 3px;
+    background-position: 0 100%
+}
+.box-cir-ani {
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .5s ease-in-out;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#FFA3FD, #FFA3FD)
+}
+.box-cir-ani:hover {
+    background-size: 100% 3px;
+    background-position: 0 100%
+}
