@@ -1,10 +1,12 @@
-import { Cards, ClientReview, FEQ, Hero, NavBar, Button } from "./components";
+import { Cards, ClientReview, FEQ, Hero, NavBar, Stats } from "./components";
+
 
 function App() {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary overflow-hidden ">
       <NavBar />
       <Hero />
+      <Stats/>
       <Cards />
       <ClientReview />
       <FEQ />

@@ -5,14 +5,14 @@ import { Button } from ".";
 
 const navBar = () => {
   return (
-    <nav className="bg-primary flex text-white">
+    <nav className="bg-primary flex">
       <img src={logo} alt="Logo" className="ml-4 max-w-[140px] max-h-[100px] cursor-pointer" />
       <ul className="list-none sm:flex hidden flex-wrap w-full justify-center items-center flex-1">
         {navLinks.map((nav) => (
           <li key={nav.id}>
             <a
               href={`#${nav.id}`}
-              className="text-[18px] font-semibold mx-5 text-main link-underline link-underline-black "
+              className="text-[20px] font-semibold mx-5 text-P link-underline link-underline-black "
             >
               {nav.title}
             </a>
