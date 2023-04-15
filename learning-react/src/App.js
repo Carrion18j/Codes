@@ -1,15 +1,13 @@
-import React from 'react'
-import { ExpenceItem } from './components'
-import './Data'
-import { expencess } from './Data'
+import React from "react";
+import { Expences } from "./components";
+import "./data";
 
 const App = () => {
   return (
-    <section className=' bg-slate-700'>
-      <ExpenceItem tital={expencess[0].tital} date={expencess[0].date} price={expencess[0].price}></ExpenceItem>
-      <ExpenceItem tital={expencess[1].tital} date={expencess[1].date} price={expencess[1].price}></ExpenceItem>
+    <section className="flex flex-col justify-center items-center bg-slate-700">
+      <Expences/>
     </section>
-  )
-}
+  );
+};
 
-export default App
+export default App;
