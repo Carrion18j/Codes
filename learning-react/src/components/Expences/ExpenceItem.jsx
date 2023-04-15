@@ -11,7 +11,7 @@ function ExpenceItem(e) {
         <div className="border-[4px] border-gray-400 flex text-[26px] font-medium bg-purple-800 rounded-[16px] justify-center items-center px-[26px] mr-[26px]">
           <h2>{tital}</h2>
           <div className="ml-[20px]">${e.price}</div>
-          <div>
+          <div className="flex flex-col">
             <button
               onClick={() => {
                 setTital("updated");
@@ -26,7 +26,7 @@ function ExpenceItem(e) {
               }}
               className="border-[2px] border-gray-400 flex text-[18px] font-normal bg-purple-800 rounded-[16px] ml-[30px] justify-center items-center px-[10px]"
             >
-              Previous Tital
+              Initial Tital
             </button>
           </div>
         </div>
