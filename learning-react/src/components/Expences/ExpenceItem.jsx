@@ -6,11 +6,11 @@ function ExpenceItem(e) {
   const [tital, setTital] = useState(e.tital);
 
   return (
-    <section className="p-[26px]">
-      <div className=" ss:flex-row flex-col  shadow-xl shadow-gray-900 flex bg-gray-900 text-[2rem] font-light rounded-[46px] text-[rgb(255,255,255)] justify-between p-[2%]">
+    <section className="p-[16px] ">
+      <div className=" ss:flex-row flex-col items-center gap-[20px] shadow-xl shadow-gray-900 flex bg-gray-900 text-[2rem] font-light rounded-[46px] text-[rgb(255,255,255)] justify-between p-[2%]">
         <ExpenceDate date={e.date}></ExpenceDate>
         <div
-          className={`${styles.flexs} border-[4px] border-gray-400 text-[1.6rem] font-medium bg-purple-800 rounded-[16px] px-[1.6rem] mr-[1.6rem]`}
+          className={`${styles.flexs} ss:flex-row flex-col min-w-[260px] min-h-[130px] border-[4px] border-gray-400 text-[1.6rem] font-medium bg-purple-800 rounded-[16px] px-[1.6rem] mr-[1.6rem]`}
         >
           <h2>{tital}</h2>
           <div className="ml-[1.2rem]">${e.price}</div>
