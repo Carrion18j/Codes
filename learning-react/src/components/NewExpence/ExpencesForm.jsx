@@ -24,10 +24,10 @@ const From = (props) => {
     const enteredData = {
       title: enteredTitle,
       amount: enteredAmount,
-      date: new Date(enteredDate)
+      date: new Date(enteredDate),
     };
 
-    props.onSaveExpenceData(enteredData)
+    props.onSaveExpenceData(enteredData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");

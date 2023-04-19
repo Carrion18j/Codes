@@ -1,6 +1,6 @@
 import Expences from "./Expences/Expences";
 import NewExpence from "./NewExpence/NewExpence"
-import MainMeter from "./ExpenceMeter/MainMeter";
+import MainMeter from "./Expences/ExpenceMeter/MainMeter";
 
 export {
     Expences,

@@ -1,11 +1,11 @@
 import React from "react";
-import ExpenceItem  from "./ExpenceItem";
+import ExpenceItem from "./ExpenceItem";
 import { expencess } from "../../data";
 
-const Expences = () => {
-
+const Expences = (props) => {
+  console.log(props.year);
   return (
-    <div className="min-w-[80%] scale-[80%] bg-slate-800 rounded-[16px] pt-[20px] shadow-xl shadow-gray-900">
+    <div className=" min-w-[80%] scale-[80%] bg-slate-800 rounded-[16px] pt-[20px] shadow-xl shadow-gray-900">
       <ExpenceItem
         tital={expencess[0].tital}
         date={expencess[0].date}
