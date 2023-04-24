@@ -1,23 +1,24 @@
 import React from "react";
 import { useState } from "react";
-import From from "./ExpencesForm";
+import Form from "./ExpencesForm";
 import styles from "../../styles";
 import MainMeter from "../Expences/ExpenceMeter/MainMeter";
 import ExpecnseFilter from "../Expences/ExpenceMeter/ExpecnseFilter";
 
 const NewExpence = (props) => {
-  const filterChangeHandeler = (selectedYear) => {
-    props.enteredYear(selectedYear);
-  };
-
   const [toggle, setToggle] = useState(false);
+  
+  const filterChangeHandeler = (selectedYear) => {
+    props.recivedYear(selectedYear);
+  };
 
   const saveExpenceData = (e) => {
     const expenceData = {
-      ...e,
       id: Math.random().toString(),
+      ...e,
+
     };
-    props.enteredData(expenceData);
+    props.recivedData(expenceData);
   };
 
   return (
@@ -33,7 +34,7 @@ const NewExpence = (props) => {
           toggle ? "flex" : "hidden"
         } mb-[36px] bg-purple-600 p-[20px] mt-[26px] rounded-[26px] `}
       >
-        <From onSaveExpenceData={saveExpenceData} />
+        <Form onSaveExpenceData={saveExpenceData} />
       </div>
       <div className="flex items-center flex-col gap-[36px] mxa-h-[20%]">
         <MainMeter />

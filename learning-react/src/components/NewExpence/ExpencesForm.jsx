@@ -2,18 +2,18 @@ import React from "react";
 import { useState } from "react";
 import styles from "../../styles";
 
-const From = (props) => {
+const Form = (props) => {
   // Setting useState for data
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredTital, setEnteredTital] = useState("");
+  const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   //Storing date
   const titleChangeHandler = (e) => {
-    setEnteredTitle(e.target.value);
+    setEnteredTital(e.target.value);
   };
   const amountChangeHandler = (e) => {
-    setEnteredAmount(e.target.value);
+    setEnteredPrice(e.target.value);
   };
   const dateChangeHandler = (e) => {
     setEnteredDate(e.target.value);
@@ -22,14 +22,14 @@ const From = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     const enteredData = {
-      title: enteredTitle,
-      amount: enteredAmount,
       date: new Date(enteredDate),
+      tital: enteredTital,
+      price: enteredPrice,
     };
 
     props.onSaveExpenceData(enteredData);
-    setEnteredTitle("");
-    setEnteredAmount("");
+    setEnteredTital("");
+    setEnteredPrice("");
     setEnteredDate("");
   };
 
@@ -42,7 +42,7 @@ const From = (props) => {
           </label>
           <input
             type="text"
-            value={enteredTitle}
+            value={enteredTital}
             onChange={titleChangeHandler}
             className="max-h-[46px]  rounded-[8px] bg-white p-[4px] w-[75%]"
           />
@@ -52,7 +52,7 @@ const From = (props) => {
             Amount
           </label>
           <input
-            value={enteredAmount}
+            value={enteredPrice}
             sin="0.01"
             type="number"
             onChange={amountChangeHandler}
@@ -85,4 +85,4 @@ const From = (props) => {
   );
 };
 
-export default From;
+export default Form;
