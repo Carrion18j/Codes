@@ -11,19 +11,19 @@ const Dummyexpences = [
   },
   {
     id: 1,
-    date: new Date(2024, 5, 24),
+    date: new Date(2022, 5, 24),
     tital: "Plane Ticket",
     price: 500.52,
   },
   {
     id: 2,
-    date: new Date(2023, 6, 18),
+    date: new Date(2021, 6, 18),
     tital: "Toilet Paper",
     price: 113.12,
   },
   {
     id: 3,
-    date: new Date(2022, 1, 12),
+    date: new Date(2020, 1, 12),
     tital: "House Repair",
     price: 283.12,
   },
@@ -32,13 +32,12 @@ const Dummyexpences = [
 const App = () => {
   const thisYear = new Date().getFullYear();
   const [year, setYear] = useState(thisYear);
-  const [expenceData, setExpenceData] = useState([]);
+  const [expenceData, setExpenceData] = useState(Dummyexpences);
 
   const recivedDataHandler = (expence) => {
     setExpenceData((prevExpence) => {
       return [...prevExpence, expence];
     });
-    console.log(expence);
   };
 
   return (
@@ -49,7 +48,6 @@ const App = () => {
       <div className="lg:mt-0 mt-10 flex lg:justify-normal justify-center">
         <Expences year={year} expencess={expenceData} />
       </div>
-      {console.log(expenceData)}
     </section>
   );
 };

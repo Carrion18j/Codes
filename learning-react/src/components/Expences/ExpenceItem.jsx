@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ExpenceDate from "./ExpenceDate";
 import styles from "../../styles";
 
@@ -13,7 +13,7 @@ function ExpenceItem(e) {
           className={`${styles.flexs} md:mt-0 mt-5 ss:flex-row flex-col min-w-[260px] min-h-[130px] border-[4px] border-gray-400 text-[1.6rem] font-medium bg-purple-800 rounded-[16px] px-[1.6rem] `}
         >
           <h2>{e.tital}</h2>
-          <div className="ml-[1.2rem]">${e.price}</div>
+          <div className="ml-[1.2rem]">{e.price}$</div>
         </div>
       </div>
     </section>
