@@ -7,20 +7,6 @@ import Button from "../UI/Button/Button";
 const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
-  // useEffect(() => {
-  //   const identifier = setTimeout(() => {
-  //     console.log('Checking form validity!');
-  //     setFormIsValid(
-  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
-
-  //   return () => {
-  //     console.log('CLEANUP');
-  //     clearTimeout(identifier);
-  //   };
-  // }, [enteredEmail, enteredPassword]);
-
   const [emailState, dispatchEmail] = useReducer(
     (state, action) => {
       if (action.type === "INPUT_EMAIL") {
@@ -39,7 +25,7 @@ const Login = (props) => {
   const [passwordState, dispatchPassword] = useReducer(
     (state, action) => {
       if (action.type === "INPUT_PASSWORD") {
-        return { value: action.value, isValid: action.value.trim().length > 6 }
+        return { value: action.value, isValid: action.value.trim().length > 6 };
       }
       if (action.type === "INPUT_BLUR") {
         return { value: state.value, isValid: state.value.trim().length > 6 };
@@ -52,16 +38,28 @@ const Login = (props) => {
     }
   );
 
+    const { isValid : isEmailValid } = emailState
+    const { isValid : isPasswordValid } = passwordState
+    
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("Checking form validity!");
+      setFormIsValid(
+        isEmailValid && isPasswordValid
+      );
+    }, 500);
+
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [isEmailValid, isPasswordValid]);
+
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "INPUT_EMAIL", value: event.target.value });
-
-    setFormIsValid(emailState.isValid && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: "INPUT_PASSWORD", value: event.target.value });
-
-    setFormIsValid(emailState.isValid && passwordState.isValid);
   };
 
   const validateEmailHandler = () => {
