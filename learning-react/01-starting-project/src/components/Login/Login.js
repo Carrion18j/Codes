@@ -1,13 +1,19 @@
-import React, { useState, useEffect, useReducer, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useContext,
+  useRef,
+} from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 import AuthContext from "../../store/auth-context";
+import InputBlock from "./InputBlock";
 
-const Login = (props) => {
-
-  const ctx = useContext(AuthContext)
+const Login = () => {
+  const ctx = useContext(AuthContext);
 
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -26,6 +32,7 @@ const Login = (props) => {
       isValid: undefined,
     }
   );
+
   const [passwordState, dispatchPassword] = useReducer(
     (state, action) => {
       if (action.type === "INPUT_PASSWORD") {
@@ -42,20 +49,8 @@ const Login = (props) => {
     }
   );
 
-    const { isValid : isEmailValid } = emailState
-    const { isValid : isPasswordValid } = passwordState
-    
-  useEffect(() => {
-    const identifier = setTimeout(() => {
-      setFormIsValid(
-        isEmailValid && isPasswordValid
-      );
-    }, 500);
-
-    return () => {
-      clearTimeout(identifier);
-    };
-  }, [isEmailValid, isPasswordValid]);
+  const { isValid: isEmailValid } = emailState;
+  const { isValid: isPasswordValid } = passwordState;
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "INPUT_EMAIL", value: event.target.value });
@@ -73,44 +68,55 @@ const Login = (props) => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
 
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
   const submitHandler = (event) => {
     event.preventDefault();
-    ctx.onLogin(emailState.value, passwordState.value);
+    if (formIsValid) {
+      ctx.onLogin(emailState.value, passwordState.value);
+    } else if (!isEmailValid) {
+      emailInputRef.current.focus();
+    } else {
+      passwordInputRef.current.focus();
+    }
   };
+
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      setFormIsValid(isEmailValid && isPasswordValid);
+    }, 500);
+
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [isEmailValid, isPasswordValid]);
 
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={passwordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
+        <InputBlock
+          ref={emailInputRef}
+          name={"E-mail"}
+          id={"e-mail"}
+          type={"email"}
+          clas={classes}
+          ChangeHandler={emailChangeHandler}
+          validateHandler={validateEmailHandler}
+          State={emailState}
+        />
+        <InputBlock
+          ref={passwordInputRef}
+          name={"Password"}
+          id={"password"}
+          type={"password"}
+          clas={classes}
+          ChangeHandler={passwordChangeHandler}
+          validateHandler={validatePasswordHandler}
+          State={passwordState}
+        />
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit" className={classes.btn}>
             Login
           </Button>
         </div>
@@ -120,3 +126,140 @@ const Login = (props) => {
 };
 
 export default Login;
+
+// import React, { useEffect, useReducer, useContext, useRef } from "react";
+
+// import Card from "../UI/Card/Card";
+// import classes from "./Login.module.css";
+// import Button from "../UI/Button/Button";
+// import AuthContext from "../../store/auth-context";
+// import InputBlock from "./InputBlock";
+
+// const Login = () => {
+//   const ctx = useContext(AuthContext);
+
+//   // Whole form state
+//   const [formValidity, formValidityDispatch] = useReducer(
+//     (state, action) => {
+//       if (action.EmailType === "INPUT_EMAIL") {
+//         return {
+//           EmailValue: action.EmailValue,
+//           EmailValid: action.value.includes("@"),
+//         };
+//       }
+//       if (action.EmailType === "INPUT_BLUR") {
+//         return {
+//           EmailValue: state.EmailValue,
+//           EmailValid: state.value.includes("@"),
+//         };
+//       }
+//       if (action.PasswordType === "INPUT_PASSWORD") {
+//         return {
+//           PasswordValue: action.PasswordValue,
+//           PasswordValid: action.value.trim().length > 6,
+//         };
+//       }
+//       if (action.PasswordType === "INPUT_BLUR") {
+//         return {
+//           PasswordValue: state.PasswordValue,
+//           PasswordValid: state.value.trim().length > 6,
+//         };
+//       }
+//       if (state.EmailValid && state.PasswordValid) {
+//         return { validity: true };
+//       }
+
+//       return { value: "", isValud: false };
+//     },
+//     {
+//       PasswordValue: "",
+//       EmailValue: "",
+//       EmailValid: false,
+//       PasswordValid: false,
+//       validity: false,
+//     }
+//   );
+
+//   // handelers
+//   const emailChangeHandler = (event) => {
+//     formValidityDispatch({
+//       EmailType: "INPUT_EMAIL",
+//       EmailValue: event.target.value,
+//     });
+//   };
+
+//   const validateEmailHandler = () => {
+//     formValidityDispatch({ EmailType: "INPUT_BLUR" });
+//   };
+
+//   const passwordChangeHandler = (event) => {
+//     formValidityDispatch({
+//       PasswordType: "INPUT_PASSWORD",
+//       PasswordValue: event.target.value,
+//     });
+//   };
+
+//   const validatePasswordHandler = () => {
+//     formValidityDispatch({ PasswordType: "INPUT_BLUR" });
+//   };
+
+//   const emailInputRef = useRef();
+//   const passwordInputRef = useRef();
+
+//   const submitHandler = (event) => {
+//     event.preventDefault();
+//     if (formValidity.validity) {
+//       ctx.onLogin(formValidity.EmailValid, formValidity.PasswordValid);
+//     } else if (!formValidity.EmailValid) {
+//       emailInputRef.current.focus();
+//     } else {
+//       passwordInputRef.current.focus();
+//     }
+//   };
+
+//   useEffect(() => {
+//     const identifier = setTimeout(() => {
+//       formValidityDispatch({
+//         validity: formValidity.EmailValid && formValidity.PasswordValid,
+//       });
+//     }, 500);
+
+//     return () => {
+//       clearTimeout(identifier);
+//     };
+//   }, [formValidity.EmailValid, formValidity.PasswordValid]);
+
+//   return (
+//     <Card className={classes.login}>
+//       <form onSubmit={submitHandler}>
+//         <InputBlock
+//           ref={emailInputRef}
+//           name={"E-mail"}
+//           id={"e-mail"}
+//           type={"email"}
+//           clas={classes}
+//           ChangeHandler={emailChangeHandler}
+//           validateHandler={validateEmailHandler}
+//           State={formValidity.EmailValid}
+//         />
+//         <InputBlock
+//           ref={passwordInputRef}
+//           name={"Password"}
+//           id={"password"}
+//           type={"password"}
+//           clas={classes}
+//           ChangeHandler={passwordChangeHandler}
+//           validateHandler={validatePasswordHandler}
+//           State={formValidity.PasswordValid}
+//         />
+//         <div className={classes.actions}>
+//           <Button type="submit" className={classes.btn}>
+//             Login
+//           </Button>
+//         </div>
+//       </form>
+//     </Card>
+//   );
+// };
+
+// export default Login;

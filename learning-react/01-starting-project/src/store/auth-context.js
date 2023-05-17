@@ -10,10 +10,10 @@ export const AuthContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const isUserLoggedIn = localStorage.getItem("inUserLoggedIn");
-    if (isUserLoggedIn === "true") {
+    if(localStorage.getItem("isLoggedIn") === "true"){
       setIsLoggedIn(true);
     }
+  
   }, []);
 
   const logoutHandler = () => {
