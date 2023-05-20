@@ -24,13 +24,9 @@ function App() {
 
       const data = await response.json();
 
-      const { MoviKey: MoviData } = data;
-      console.log(MoviData);
-
       const loadedMovies = [];
 
       for (const key in data) {
-        console.log(data[key])
         loadedMovies.push({
           id: key,
           title: data[key].title,
@@ -65,6 +61,7 @@ function App() {
       return [...preKeys, data.name];
     });
     console.log(dataKey);
+    fetchMoviesHandler()
   }
 
   // calling functions
@@ -72,9 +69,6 @@ function App() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
 
-  useEffect(() => {
-    console.log(dataKey);
-  }, [dataKey]);
 
   // checking what to show
   let content = <p>Found no movies.</p>;
