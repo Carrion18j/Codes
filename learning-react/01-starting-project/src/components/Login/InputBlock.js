@@ -18,7 +18,7 @@ const InputBlock = React.forwardRef((props, ref) => {
   return (
     <div
       className={`${props.clas.control} ${
-        props.State.isValid === false ? props.clas.invalid : ""
+        props.State === false ? props.clas.invalid : ""
       }`}
     >
       <label htmlFor={props.id}>{props.name}</label>
@@ -26,7 +26,7 @@ const InputBlock = React.forwardRef((props, ref) => {
         ref={inputRef}
         type={props.type}
         id={props.id}
-        value={props.State.value}
+        value={props.value}
         onChange={props.ChangeHandler}
         onBlur={props.validateHandler}
       />

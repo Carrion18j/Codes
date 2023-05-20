@@ -144,24 +144,20 @@ export default Login;
 //       if (action.EmailType === "INPUT_EMAIL") {
 //         return {
 //           EmailValue: action.EmailValue,
-//           EmailValid: action.value.includes("@"),
+//           EmailValid: action.EmailValue.includes("@"),
 //         };
 //       }
 //       if (action.EmailType === "INPUT_BLUR") {
-//         return {
-//           EmailValue: state.EmailValue,
-//           EmailValid: state.value.includes("@"),
-//         };
+//         return console.log(state.EmailValue)
 //       }
 //       if (action.PasswordType === "INPUT_PASSWORD") {
 //         return {
 //           PasswordValue: action.PasswordValue,
-//           PasswordValid: action.value.trim().length > 6,
+//           PasswordValid: action.PasswordValue.trim().length > 6,
 //         };
 //       }
 //       if (action.PasswordType === "INPUT_BLUR") {
 //         return {
-//           PasswordValue: state.PasswordValue,
 //           PasswordValid: state.value.trim().length > 6,
 //         };
 //       }
@@ -172,11 +168,11 @@ export default Login;
 //       return { value: "", isValud: false };
 //     },
 //     {
-//       PasswordValue: "",
 //       EmailValue: "",
+//       PasswordValue: "",
 //       EmailValid: false,
 //       PasswordValid: false,
-//       validity: false,
+//       IsFormValidity: false,
 //     }
 //   );
 
@@ -203,14 +199,22 @@ export default Login;
 //     formValidityDispatch({ PasswordType: "INPUT_BLUR" });
 //   };
 
+//   const {
+//     PasswordValue: passwordValue,
+//     PasswordValid: passwordValid,
+//     EmailValue: emailValue,
+//     EmailValid: emailValid,
+//     IsFormValidity: isFormValidity,
+//   } = formValidity;
+
 //   const emailInputRef = useRef();
 //   const passwordInputRef = useRef();
 
 //   const submitHandler = (event) => {
 //     event.preventDefault();
-//     if (formValidity.validity) {
-//       ctx.onLogin(formValidity.EmailValid, formValidity.PasswordValid);
-//     } else if (!formValidity.EmailValid) {
+//     if (isFormValidity) {
+//       ctx.onLogin(emailValue, passwordValue);
+//     } else if (!emailValid) {
 //       emailInputRef.current.focus();
 //     } else {
 //       passwordInputRef.current.focus();
@@ -220,14 +224,14 @@ export default Login;
 //   useEffect(() => {
 //     const identifier = setTimeout(() => {
 //       formValidityDispatch({
-//         validity: formValidity.EmailValid && formValidity.PasswordValid,
+//         IsFormValidity: emailValid && passwordValid,
 //       });
 //     }, 500);
 
 //     return () => {
 //       clearTimeout(identifier);
 //     };
-//   }, [formValidity.EmailValid, formValidity.PasswordValid]);
+//   }, [emailValid, passwordValid]);
 
 //   return (
 //     <Card className={classes.login}>
@@ -238,9 +242,10 @@ export default Login;
 //           id={"e-mail"}
 //           type={"email"}
 //           clas={classes}
+//           value={emailValue}
 //           ChangeHandler={emailChangeHandler}
 //           validateHandler={validateEmailHandler}
-//           State={formValidity.EmailValid}
+//           State={emailValid}
 //         />
 //         <InputBlock
 //           ref={passwordInputRef}
@@ -248,9 +253,10 @@ export default Login;
 //           id={"password"}
 //           type={"password"}
 //           clas={classes}
+//           value={passwordValue}
 //           ChangeHandler={passwordChangeHandler}
 //           validateHandler={validatePasswordHandler}
-//           State={formValidity.PasswordValid}
+//           State={passwordValid}
 //         />
 //         <div className={classes.actions}>
 //           <Button type="submit" className={classes.btn}>
