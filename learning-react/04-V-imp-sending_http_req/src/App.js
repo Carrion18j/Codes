@@ -38,7 +38,7 @@ function App() {
           releaseDate: data[key].releaseDate,
         });
       }
-
+      
       setMovies(loadedMovies);
     } catch (error) {
       //Catching Erros
