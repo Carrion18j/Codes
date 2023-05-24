@@ -1,87 +1,63 @@
-import { useReducer } from "react";
+import { useState } from 'react';
 
-const SimpleInput = () => {
-
-  const [state, dispatchState] = useReducer(
-    (pervState, action) => {
-      switch (action.type) {
-        case "InputChange":
-          return {
-            userName: action.name,
-            nameIsTouched: action.nameIsTouched,
-            nameIsValid: action.nameIsValid,
-          };
-        case "Blur":
-          return { nameIsTouched: true, nameIsValid: action.nameIsValid };
-        case "formIsValid":
-          return {
-            nameIsTouched: action.nameIsTouched,
-            nameIsValid: action.nameIsValid,
-          };
-      }
-      if (pervState.userNameIsValid && !pervState.nameIsTouched) {
-        return { formIsValid: true };
-      }
-    },
-    {
-      userName: "",
-      nameIsValid: false,
-      nameIsTouched: false,
-      formIsValid: false,
-    }
-  );
-
-  // const { userName, nameIsValid , formIsValid} = state;
+const SimpleInput = (props) => {
+  const [enteredName, setEnteredName] = useState('');
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
   
-  const inputChangeHandeler = (event) => {
-    dispatchState({
-      title: "InputChange",
-      nameIsTouched: event.target.value === "" ? true : false,
-      nameIsValid: event.target.value !== "" ? false : true,
-    });
+  const enteredNameIsValid = enteredName.trim() !== '';
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+
+  let formIsValid = false;
+
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  }
+
+  const nameInputChangeHandler = (event) => {
+    setEnteredName(event.target.value);
   };
 
-  const nameInputBlurHandler = () => {
-    dispatchState({
-      type: "Blur",
-      nameIsTouched: true,
-      nameIsValid: state.userName === "" ? false : true,
-    });
+  const nameInputBlurHandler = (event) => {
+    setEnteredNameTouched(true);
   };
 
-  const formSubmitHandler = (event) => {
+  const formSubmissionHandler = (event) => {
     event.preventDefault();
-    dispatchState({
-      type: "FomrSubmit",
-      nameIsTouched: true,
-      nameIsValid: state.userName === "" ? false : true,
-    });
 
-    event.target.value = "";
+    setEnteredNameTouched(true);
+
+    if (!enteredNameIsValid) {
+      return;
+    }
+
+    console.log(enteredName);
+
+    // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
+    setEnteredName('');
+    setEnteredNameTouched(false);
   };
 
-  const formClass = !state.nameIsValid
-    ? "form-control invalid"
-    : "form-control";
+  const nameInputClasses = nameInputIsInvalid
+    ? 'form-control invalid'
+    : 'form-control';
 
   return (
-    <form onSubmit={formSubmitHandler}>
-      <div className={formClass}>
-        <label htmlFor="name">Your Name</label>
+    <form onSubmit={formSubmissionHandler}>
+      <div className={nameInputClasses}>
+        <label htmlFor='name'>Your Name</label>
         <input
-          type="text"
-          id="name"
+          type='text'
+          id='name'
+          onChange={nameInputChangeHandler}
           onBlur={nameInputBlurHandler}
-          onChange={inputChangeHandeler}
+          value={enteredName}
         />
-        {!state.nameIsValid ? (
-          <p className="error-text">Entered Name Must Not Be Empty</p>
-        ) : (
-          ""
+        {nameInputIsInvalid && (
+          <p className='error-text'>Name must not be empty.</p>
         )}
       </div>
-      <div className="form-actions">
-        <button>Submit</button>
+      <div className='form-actions'>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
