@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-const BasicForm = (props) => {
+const BasicForm = () => {
   const [userSirName, setUserSirName] = useState("");
-  const [userLastName, setUserLastName] = useState("");
-  const [userFullName, setUserFullName] = useState("");
-
   const [sirNameIsValid, setSirNameIsValid] = useState(false);
-  const [lastNameIsValid, setLastNameIsValid] = useState(false);
-  const [nameIsValid, setNameIsValid] = useState(false);
-
-  const [nameIsTouched, setNameIsTouched] = useState(false);
+  const [sirNameIsTouched, setSirNameIsTouched] = useState(false);
+  const [formClass, setFormClass] = useState("form-control");
   const [formIsValid, setFormIsValid] = useState(false);
 
   const userSirnameHandler = (event) => {
     const setSirName = setTimeout(() => {
-      if (event.target.value.lenght !== 0) {
-        setSirNameIsValid(true);
+      if (event.target.value.lenght === 0) {
+        setFormClass("form-control invalid");
+        setSirNameIsValid(false);
         return setUserSirName(event.target.value);
       } else {
-        setSirNameIsValid(false);
+        setFormClass("form-control ");
+        setSirNameIsValid(true);
+        setSirNameIsTouched(false);
         return setUserSirName(event.target.value);
       }
     }, 1000);
@@ -27,68 +25,41 @@ const BasicForm = (props) => {
     };
   };
 
-  const userLastnameHandler = (event) => {
-    const setLastName = setTimeout(() => {
-      if (event.target.value.length !== 0) {
-        setLastNameIsValid(true);
-        return setUserLastName(event.target.value);
-      } else {
-        console.log(event.target.value.length)
-        setLastNameIsValid(false);
-        return setUserLastName(event.target.value);
-      }
-    }, 1000);
-    return () => {
-      clearTimeout(setLastName);
-    };
-  };
-
   // blur event handlers
   const userSirNameBlurHandler = () => {
-    if (userLastName.trim().length === 0) {
-      setNameIsTouched(true);
+    if (userSirName === "") {
+      setSirNameIsTouched(true);
     } else {
-      setNameIsTouched(false);
-    }
-  };
-
-  const userLastNameBlurHandler = () => {
-    if (userLastName.trim().length === 0) {
-      setNameIsTouched(true);
-    } else {
-      setNameIsTouched(false);
+      setSirNameIsTouched(false);
     }
   };
 
   // oveall form state manager
   useEffect(() => {
-    if (sirNameIsValid && lastNameIsValid) {
-      setUserFullName(userSirName + " " + userLastName);
-      setNameIsValid(true);
-    } else if (nameIsValid && !nameIsTouched) {
+    if (!sirNameIsTouched && sirNameIsValid) {
       setFormIsValid(true);
+    } else if (sirNameIsTouched && !sirNameIsValid) {
+      setFormClass("form-control invalid");
+    } else if (sirNameIsTouched && userSirName === "") {
+      setSirNameIsValid(false);
     } else {
-      console.log(userSirName, userLastName, sirNameIsValid, lastNameIsValid);
-      setUserFullName(userSirName + " " + userLastName);
-      setNameIsValid(false);
+      setFormIsValid(false);
     }
-  }, [userSirName, userLastName, sirNameIsValid, lastNameIsValid]);
+  }, [sirNameIsTouched, sirNameIsValid]);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
     if (formIsValid) {
       setUserSirName("");
-      setUserLastName("");
-      return;
     } else {
-      console.log("form Validity" + formIsValid);
+      setSirNameIsValid(false);
     }
   };
-
+  
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="control-group">
-        <div className="form-control">
+        <div className={formClass}>
           <label htmlFor="name">First Name</label>
           <input
             type="text"
@@ -99,12 +70,7 @@ const BasicForm = (props) => {
         </div>
         <div className="form-control">
           <label htmlFor="name">Last Name</label>
-          <input
-            type="text"
-            id="name"
-            onChange={userLastnameHandler}
-            onBlur={userLastNameBlurHandler}
-          />
+          <input type="text" id="name" />
         </div>
       </div>
       <div className="form-control">
