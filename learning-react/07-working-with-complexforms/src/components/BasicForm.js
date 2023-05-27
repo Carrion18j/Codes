@@ -1,40 +1,116 @@
 import React, { useEffect, useState } from "react";
-import useData from "../hooks/form-hook";
+import useInput from "../hooks/form-hook";
 
-const BasicForm = () => {
-  const userSirnameHandler = (event) => {
-    return event;
+const SimpleInput = (props) => {
+  const {
+    value: enteredSirName,
+    isValid: enteredSirNameIsValid,
+    hasError: sirNameInputHasError,
+    valueChangeHandler: sirNameChangeHandler,
+    inputBlurHandler: sirNameBlurHandler,
+    reset: resetSirNameInput,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: enteredLastName,
+    isValid: enteredLastNameIsValid,
+    hasError: lastNameInputHasError,
+    valueChangeHandler: lastNameChangedHandler,
+    inputBlurHandler: lastNameBlurHandler,
+    reset: resetLastNameInput,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: enteredEmail,
+    isValid: enteredEmailIsValid,
+    hasError: emailInputHasError,
+    valueChangeHandler: emailChangedHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailInput,
+  } = useInput((value) => value.trim() !== "");
+
+  let formIsValid = false;
+
+  if (enteredSirNameIsValid) {
+    formIsValid = true;
+  }
+
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+
+    if (
+      !enteredSirNameIsValid ||
+      !enteredLastNameIsValid ||
+      !enteredEmailIsValid
+    ) {
+      return;
+    } else {
+      console.log(enteredSirName);
+      console.log(enteredLastName);
+      console.log(enteredEmail);
+
+      // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
+      resetSirNameInput();
+      resetLastNameInput();
+      resetEmailInput();
+    }
   };
-  const userSirNameBlurHandler = () => {};
 
-  const { isValid, isTouched } = useData({
-    userSirnameHandler,
-    userSirNameBlurHandler,
-  });
+  const sirNameCalss = sirNameInputHasError
+    ? "form-control invalid"
+    : "form-control";
 
-  console.log(isValid, isTouched);
+  const lastNameClass = lastNameInputHasError
+    ? "form-control invalid"
+    : "form-control";
+
+  const emailClass = emailInputHasError
+    ? "form-control invalid"
+    : "form-control";
 
   return (
-    <form>
+    <form onSubmit={formSubmissionHandler}>
       <div className="control-group">
-        <div className={""}>
+        <div className={sirNameCalss}>
           <label htmlFor="name">First Name</label>
           <input
             type="text"
             id="name"
-            onChange={userSirnameHandler}
-            onBlur={userSirNameBlurHandler}
+            value={enteredSirName}
+            onChange={sirNameChangeHandler}
+            onBlur={sirNameBlurHandler}
           />
         </div>
-        <div className="form-control">
+        {sirNameInputHasError && (
+          <p className="error-text">Please Enter The Sir Name First</p>
+        )}
+        <div className={lastNameClass}>
           <label htmlFor="name">Last Name</label>
-          <input type="text" id="name" />
+          <input
+            type="text"
+            id="name"
+            value={enteredLastName}
+            onChange={lastNameChangedHandler}
+            onBlur={lastNameBlurHandler}
+          />
         </div>
+        {lastNameInputHasError && (
+          <p className="error-text">Please Enter The Last Name First</p>
+        )}
       </div>
-      <div className="form-control">
+      <div className={emailClass}>
         <label htmlFor="name">E-Mail Address</label>
-        <input type="text" id="name" />
+        <input
+          type="text"
+          id="name"
+          value={enteredEmail}
+          onChange={emailChangedHandler}
+          onBlur={emailBlurHandler}
+        />
       </div>
+      {emailInputHasError && (
+        <p className="error-text">Please Enter The Email Name First</p>
+      )}
       <div className="form-actions">
         <button>Submit</button>
       </div>
@@ -42,59 +118,4 @@ const BasicForm = () => {
   );
 };
 
-export default BasicForm;
-
-// const [userSirName, setUserSirName] = useState("");
-//   const [sirNameIsValid, setSirNameIsValid] = useState(false);
-//   const [sirNameIsTouched, setSirNameIsTouched] = useState(false);
-//   const [formClass, setFormClass] = useState("form-control");
-//   const [formIsValid, setFormIsValid] = useState(false);
-
-//   const userSirnameHandler = (event) => {
-//     const setSirName = setTimeout(() => {
-//       if (event.target.value.lenght === 0) {
-//         setFormClass("form-control invalid");
-//         setSirNameIsValid(false);
-//         return setUserSirName(event.target.value);
-//       } else {
-//         setFormClass("form-control ");
-//         setSirNameIsValid(true);
-//         setSirNameIsTouched(false);
-//         return setUserSirName(event.target.value);
-//       }
-//     }, 1000);
-//     return () => {
-//       clearTimeout(setSirName);
-//     };
-//   };
-
-//   // blur event handlers
-//   const userSirNameBlurHandler = () => {
-//     if (userSirName === "") {
-//       setSirNameIsTouched(true);
-//     } else {
-//       setSirNameIsTouched(false);
-//     }
-//   };
-
-//   // oveall form state manager
-//   useEffect(() => {
-//     if (!sirNameIsTouched && sirNameIsValid) {
-//       setFormIsValid(true);
-//     } else if (sirNameIsTouched && !sirNameIsValid) {
-//       setFormClass("form-control invalid");
-//     } else if (sirNameIsTouched && userSirName === "") {
-//       setSirNameIsValid(false);
-//     } else {
-//       setFormIsValid(false);
-//     }
-//   }, [sirNameIsTouched, sirNameIsValid]);
-
-//   const formSubmitHandler = (event) => {
-//     event.preventDefault();
-//     if (formIsValid) {
-//       setUserSirName("");
-//     } else {
-//       setSirNameIsValid(false);
-//     }
-//   };
+export default SimpleInput;

@@ -21,6 +21,11 @@ body {
   background-color: white;
   margin: 3rem auto;
 }
+form,
+.control-group {
+  display: flex;
+  flex-direction: column;
+}
 
 .form-control {
   margin-bottom: 1rem;
