@@ -34,32 +34,27 @@ public class OOP {
 
     // Eg 3
     public static class GetSet {
-        private int age;
-        private String name;
-        private String job;
+        private int userAge;
+        private String userName;
+        private String userJob;
 
-        public void setName(String e) {
-            name = e;
+        // Coustructor method
+        public GetSet(String name, int age, String job) {
+            userAge = age;
+            userName = name;
+            userJob = job;
         }
 
         public String getName() {
-            return name;
-        }
-
-        public void setAge(int e) {
-            age = e;
+            return userName;
         }
 
         public int getAge() {
-            return age;
-        }
-
-        public void setJog(String e) {
-            job = e;
+            return userAge;
         }
 
         public String getJob() {
-            return job;
+            return userJob;
         }
 
     }
@@ -93,16 +88,11 @@ public class OOP {
          * System.out.println("circle circumfrence: " + circle.getCircumference());
          */
 
-        /*
-         * //Eg 3
-         * GetSet newGetSet = new GetSet();
-         * newGetSet.setName("Cherry");
-         * newGetSet.setAge(19);
-         * newGetSet.setJog("Software Doveloper");
-         * System.out.println(newGetSet.getName());
-         * System.out.println(newGetSet.getAge());
-         * System.out.println(newGetSet.getJob());
-         */
+        // Eg 3 Getter and setter methods
+        GetSet newGetSet = new GetSet("cherry", 14, "software Engineer");
+        System.out.println(newGetSet.getName());
+        System.out.println(newGetSet.getAge());
+        System.out.println(newGetSet.getJob());
 
     }
 
