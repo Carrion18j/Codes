@@ -13,7 +13,7 @@ public class GussTheNumOOP {
 
         public void gussNumber() {
             try (Scanner sc = new Scanner(System.in)) {
-                System.out.println("Enter your number");
+                System.out.print("Enter your number : ");
                 int userNum = sc.nextInt();
 
                 if (userNum == randNum) {
@@ -29,7 +29,7 @@ public class GussTheNumOOP {
         }
 
         public void rightGuss() {
-            System.out.println("You Win the correct ans is: " + randNum);
+            System.out.println("You Win the correct answer is: " + randNum);
         }
 
     }
