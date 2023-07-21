@@ -32,29 +32,53 @@ public class OOP {
      * }
      */
 
-    // Eg 3
-    public static class GetSet {
+    /*
+     * // Eg 3
+     * public static class GetSet {
+     * private int userAge;
+     * private String userName;
+     * private String userJob;
+     * 
+     * // Coustructor method
+     * public GetSet(String name, int age, String job) {
+     * userAge = age;
+     * userName = name;
+     * userJob = job;
+     * }
+     * 
+     * public String getName() {
+     * return userName;
+     * }
+     * 
+     * public int getAge() {
+     * return userAge;
+     * }
+     * 
+     * public String getJob() {
+     * return userJob;
+     * }
+     * 
+     * }
+     */
+
+    // Eg 4 constructor inheritance
+    public static class Inherit {
         private int userAge;
         private String userName;
-        private String userJob;
 
-        // Coustructor method
-        public GetSet(String name, int age, String job) {
-            userAge = age;
-            userName = name;
-            userJob = job;
+        Inherit(String userName, int userAge) {
+            this.userName = userName;
+            this.userAge = userAge;
         }
 
-        public String getName() {
-            return userName;
+        public void display() {
+            System.out.println(userName + " is " + userAge + " old");
         }
+    }
 
-        public int getAge() {
-            return userAge;
-        }
-
-        public String getJob() {
-            return userJob;
+    public static class Inheritance extends Inherit {
+        Inheritance(String userName, int userAge) {
+            super(userName, userAge);
         }
 
     }
@@ -88,12 +112,17 @@ public class OOP {
          * System.out.println("circle circumfrence: " + circle.getCircumference());
          */
 
-        // Eg 3 Getter and setter methods
-        GetSet newGetSet = new GetSet("cherry", 14, "software Engineer");
-        System.out.println(newGetSet.getName());
-        System.out.println(newGetSet.getAge());
-        System.out.println(newGetSet.getJob());
+        /*
+         * // Eg 3 Getter and setter methods
+         * GetSet newGetSet = new GetSet("cherry", 14, "software Engineer");
+         * System.out.println(newGetSet.getName());
+         * System.out.println(newGetSet.getAge());
+         * System.out.println(newGetSet.getJob());
+         */
 
+        // Eg 4 constructor inheritance
+        Inheritance innerInstance = new Inheritance("cherry", 12);
+        innerInstance.display();
     }
 
 }
