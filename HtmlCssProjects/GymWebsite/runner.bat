@@ -1,1 +1,0 @@
-start "" "C:\Users\shiva\OneDrive\Codes\Codes\.vscode\Projects\Project_no7_GymWebsite\index.html"
