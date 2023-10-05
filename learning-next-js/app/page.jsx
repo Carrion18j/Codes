@@ -18,3 +18,18 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /*
+
+  [] Implement Search 
+    - Search by prompts
+    - Search by tag
+    - Search by username
+  [] Implement Click on tag 
+  [] Implement View other profiles
+
+
+  https://github.com/adrianhajdin/project_next_13_ai_prompt_sharing/tree/main
+*/
+}
