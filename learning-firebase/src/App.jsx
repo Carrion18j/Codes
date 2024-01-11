@@ -9,6 +9,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
+
 import Tasks from "./components/Tasks";
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
       console.log(err);
     }
   };
+  
   const updateTitle = async (id) => {
     try {
       const taskDoc = doc(db, "tasks", id);
